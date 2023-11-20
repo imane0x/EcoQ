@@ -34,7 +34,9 @@ android {
 
 dependencies {
 
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    //noinspection GradleCompatible
+    implementation ("androidx.appcompat:appcompat:1.1.0")
+    //implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
@@ -46,6 +48,7 @@ dependencies {
     implementation ("com.google.firebase:firebase-core:10.2.0")
     implementation ("com.google.firebase:firebase-database:10.2.0")
     implementation ("info.hoang8f:fbutton:1.0.5")
+
     implementation ("com.rengwuxian.materialedittext:library:2.1.4")
 
 }
