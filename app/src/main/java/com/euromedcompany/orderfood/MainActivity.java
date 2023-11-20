@@ -2,6 +2,7 @@ package com.euromedcompany.orderfood;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Add your onClick logic for btnSignIn
+                startActivity(new Intent(MainActivity.this, SignIn.class));
             }
         });
 
