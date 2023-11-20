@@ -8,12 +8,21 @@
     android:background="@drawable/background"
     tools:context="com.euromedcompany.orderfood.MainActivity">
 
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/logo" />
+
     <TextView
         android:id="@+id/txtSlogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:text="Your Slogan Here"
-        android:layout_centerInParent="true" />
+        android:textColor="#E91E63"
+        android:textSize="50sp" />
 
     <LinearLayout
         android:orientation="horizontal"
