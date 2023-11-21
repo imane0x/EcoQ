@@ -68,7 +68,22 @@
 
     </LinearLayout>
 
-    <info.hoang8f.widget.FButton
+<!--    <info.hoang8f.widget.FButton-->
+<!--        android:id="@+id/btnSignUp"-->
+<!--        android:text="Sign Up"-->
+<!--        android:textColor="#000000"-->
+<!--        android:layout_marginRight="8dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="8dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        app:buttonColor="@color/btnSignUp"-->
+<!--        app:shadowColor="#000000"-->
+<!--        app:shadowEnabled="true"-->
+<!--        app:shadowHeight="5dp"-->
+<!--        app:cornerRadius="4dp"/>-->
+    <Button
         android:id="@+id/btnSignUp"
         android:text="Sign Up"
         android:textColor="#000000"
@@ -78,10 +93,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:layout_alignParentBottom="true"
-        app:buttonColor="@color/btnSignUp"
-        app:shadowColor="#000000"
-        app:shadowEnabled="true"
-        app:shadowHeight="5dp"
-        app:cornerRadius="4dp"/>
+        android:background="@color/btnSignUp"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="0"/>
 
 </RelativeLayout>
