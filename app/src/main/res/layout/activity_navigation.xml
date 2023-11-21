@@ -7,21 +7,21 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".NavigationActivity">
 
-<Button
-    android:id="@+id/skipButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Skip"
-    android:fontFamily="@font/poppins_semibold"
-    android:layout_marginTop="20dp"
-    android:layout_marginEnd="15dp"
-    android:textColor="@color/white"
-    android:textSize="14sp"
-    app:cornerRadius = "15dp"
-    android:padding="8dp"
-    android:drawableRight="@drawable/ic_baseline_skip_next_24"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/skipButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:drawableRight="@drawable/baseline_skip_next_24"
+        android:fontFamily="@font/poppins_semibold"
+        android:padding="8dp"
+        android:text="Skip"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 <androidx.viewpager.widget.ViewPager
     android:id="@+id/slideViewPager"
