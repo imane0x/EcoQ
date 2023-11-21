@@ -85,17 +85,15 @@
 <!--        app:cornerRadius="4dp"/>-->
     <Button
         android:id="@+id/btnSignUp"
-        android:text="Sign Up"
-        android:textColor="#000000"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
         android:backgroundTint="@color/btnSignUp"
         android:shadowColor="#000000"
         android:shadowDx="0"
-        android:shadowDy="0"/>
+        android:shadowDy="0"
+        android:text="Sign Up"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>
