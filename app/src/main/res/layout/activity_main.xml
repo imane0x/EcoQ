@@ -1,98 +1,129 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/newbackground"
-    tools:context="com.euromedcompany.orderfood.MainActivity">
+    android:background="@drawable/pagebkg"
+    tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to our app"
+        android:id="@+id/welcome"
+        android:textColor="@color/lavender"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <ImageView
-            android:id="@+id/logoImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/shape" />
+    <!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:id="@+id/userName"
+        android:textColor="@color/lavender"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcome"/>
 
-        <TextView
-            android:id="@+id/txtSlogan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/logoImageView"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
-            android:text="Your Slogan Here"
-            android:textColor="#E91E63"
-            android:textSize="30sp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:id="@+id/logout"
+        android:textSize="20sp"
+        android:padding="12dp"
+        android:layout_marginTop="10dp"
+        app:cornerRadius = "15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userName"/>
+           -->
 
-    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:weightSum="2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <!--        <info.hoang8f.widget.FButton-->
-        <!--            android:id="@+id/btnSignUp"-->
-        <!--            android:text="SignUp"-->
-        <!--            android:textColor="#000000"-->
-        <!--            android:layout_weight="1"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_margin="8dp"-->
-        <!--            app:buttonColor="@color/btnSignUp"-->
-        <!--            app:shadowColor="#000000"-->
-        <!--            app:shadowEnabled="true"-->
-        <!--            app:shadowHeight="5dp"-->
-        <!--            app:cornerRadius="4dp"/>-->
 
-        <!--        <info.hoang8f.widget.FButton-->
-        <!--            xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--            android:id="@+id/btnSignIn"-->
-        <!--            android:text="Sign In"-->
-        <!--            android:textColor="#000000"-->
-        <!--            android:layout_weight="1"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_margin="8dp"-->
-        <!--            app:buttonColor="@color/btnSignActive"-->
-        <!--            app:shadowColor="#000000"-->
-        <!--            app:shadowEnabled="true"-->
-        <!--            app:shadowHeight="5dp"-->
-        <!--            app:cornerRadius="4dp"/>-->
-        <Button
-            android:id="@+id/btnSignUp"
-            android:text="Sign Up"
-            android:textColor="@android:color/white"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/btnSignUp"
-            android:elevation="5dp"
-            android:radius="4dp"/>
 
-        <Button
-            android:id="@+id/btnSignIn"
-            android:text="Sign In"
-            android:textColor="@android:color/white"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/btnSignActive"
-            android:elevation="5dp"
-            android:radius="4dp"/>
 
-    </LinearLayout>
+    <!--
 
-</RelativeLayout>
+      <?xml version="1.0" encoding="utf-8" ?>
+  <RelativeLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@drawable/newbackground"
+      tools:context="com.euromedcompany.orderfood.MainActivity">
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+          <ImageView
+              android:id="@+id/logoImageView"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true"
+              android:layout_marginTop="10dp"
+              android:src="@drawable/shape" />
+
+          <TextView
+              android:id="@+id/txtSlogan"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/logoImageView"
+              android:layout_centerInParent="true"
+              android:layout_marginTop="10dp"
+              android:text="Your Slogan Here"
+              android:textColor="#E91E63"
+              android:textSize="30sp" />
+
+      </RelativeLayout>
+
+
+      <LinearLayout
+          android:orientation="horizontal"
+          android:layout_alignParentBottom="true"
+          android:gravity="center"
+          android:weightSum="2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <Button
+              android:id="@+id/btnSignUp"
+              android:text="Sign Up"
+              android:textColor="@android:color/white"
+              android:layout_weight="1"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_margin="8dp"
+              android:backgroundTint="@color/btnSignUp"
+              android:elevation="5dp"
+              android:radius="4dp"/>
+
+          <Button
+              android:id="@+id/btnSignIn"
+              android:text="Sign In"
+              android:textColor="@android:color/white"
+              android:layout_weight="1"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_margin="8dp"
+              android:backgroundTint="@color/btnSignActive"
+              android:elevation="5dp"
+              android:radius="4dp"/>
+
+      </LinearLayout>
+
+  </RelativeLayout>
+-->
