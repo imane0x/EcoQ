@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "850236729243",
-    "project_id": "order-food-58092",
-    "storage_bucket": "order-food-58092.appspot.com"
+    "project_number": "1068395920153",
+    "project_id": "projectfirebasev1",
+    "storage_bucket": "projectfirebasev1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:850236729243:android:acd4c58d594fa843ffe33e",
+        "mobilesdk_app_id": "1:1068395920153:android:c4dbff072d39cdbc202388",
         "android_client_info": {
           "package_name": "com.euromedcompany.orderfood"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAEDD8Sp_pTxclbYeKpjSsDd57LDmIe85g"
+          "current_key": "AIzaSyCU4AScB3igYMoWuKoag0P6jGlZu7C-11Q"
         }
       ],
       "services": {
