@@ -52,4 +52,6 @@ dependencies {
 
     implementation ("com.rengwuxian.materialedittext:library:2.1.4")
 
+    implementation("com.airbnb.android:lottie:3.4.1")
+
 }
