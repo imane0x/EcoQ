@@ -21,6 +21,12 @@
             android:name=".VideoCardActivity"
             android:exported="false" />
         <activity
+            android:name=".ShortsCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExploreCardActivity"
+            android:exported="false" />
+        <activity
             android:name=".LogInActivity"
             android:exported="false" />
         <activity
