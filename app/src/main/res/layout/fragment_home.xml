@@ -5,16 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/newbackground"
     tools:context=".MainActivity">
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/newbackground"
-        tools:context=".MainActivity">
+        android:background="@drawable/pagebkg"
+        tools:context=".MainActivityCard">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,17 +23,16 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="40dp"
-                android:fontFamily="@font/akaya_telivigala"
+                android:fontFamily="@font/aclonica"
                 android:text="Appy"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="40sp"
+                app:layout_constraintBottom_toTopOf="@+id/appDesc"
                 app:layout_constraintEnd_toStartOf="@+id/logo"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/appDesc"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/appDesc"
@@ -46,7 +41,7 @@
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="15dp"
                 android:text="Shop from A to Z"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@+id/logo"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -253,9 +248,9 @@
         <com.google.android.material.bottomappbar.BottomAppBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:id="@+id/bottomAppBar"
             android:layout_gravity="bottom"
-            android:background="@color/white"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="50dp">
 
@@ -263,7 +258,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/bottomNavigationView"
-                android:layout_marginEnd="20dp"
                 app:labelVisibilityMode="labeled"
                 android:background="@android:color/transparent"
                 app:menu="@menu/bottom_menu"/>
@@ -272,47 +266,3 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:background="@color/lavender"-->
-<!--    tools:context=".HomeFragment">-->
-<!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:text="Home"-->
-<!--        android:gravity="center"-->
-<!--        android:textSize="30sp"-->
-<!--        android:textColor="@color/white"/>-->
-<!--</FrameLayout>-->
