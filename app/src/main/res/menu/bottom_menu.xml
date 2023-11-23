@@ -7,7 +7,7 @@
         android:icon="@drawable/baseline_whatshot_24"/>
 
     <item
-        android:id="@+id/fab"
+        android:id="@+id/live"
         android:title="Live"
         android:icon="@drawable/baseline_live_tv_24" />
 
@@ -17,13 +17,13 @@
         android:icon="@drawable/baseline_home_24"/>
 
     <item
-        android:id="@+id/subscriptions"
-        android:title="Subscriptions"
+        android:id="@+id/video"
+        android:title="Video"
         android:icon="@drawable/baseline_subscriptions_24"/>
 
     <item
-        android:id="@+id/library"
-        android:title="Library"
+        android:id="@+id/explore"
+        android:title="Explore"
         android:icon="@drawable/baseline_video_library_24"/>
 
 </menu>

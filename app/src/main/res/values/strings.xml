@@ -10,4 +10,6 @@
     <string name="screen3desc">YouTube live streaming allows you to reach your community in real time.
     Go live on YouTube from webcam, mobile and encoder streaming.</string>
     <string name="startDesc">Create a long video or shorts and upload on youtube. Interact with your subscribers on youtube live.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
