@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 public class MainActivityCard extends AppCompatActivity {
         CardView videoCard;
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
