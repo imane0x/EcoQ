@@ -11,16 +11,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.euromedcompany.orderfood.databinding.FragmentHomeBinding;
 
-
 public class HomeFragment extends Fragment {
 
-    //setContentView(R.layout.activity_main_card);
     FragmentHomeBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        binding = FragmentHomeBinding.inflate(getLayoutInflater());
+        // Inflate the layout for this fragment using data binding
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+
 
         binding.videoCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,18 +27,21 @@ public class HomeFragment extends Fragment {
                 replaceFragment(new VideoFragment());
             }
         });
+
         binding.shortsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 replaceFragment(new ShortsFragment());
             }
         });
+
         binding.liveCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 replaceFragment(new LiveFragment());
             }
         });
+
         binding.exploreCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,42 +49,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return binding.getRoot();
     }
 
-/*
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = FragmentHomeBinding.inflate(getLayoutInflater());
-        binding.videoCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new VideoFragment());
-            }
-        });
-        binding.shortsCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new ShortsFragment());
-            }
-        });
-        binding.liveCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new LiveFragment());
-            }
-        });
-        binding.exploreCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new ExploreFragment());
-            }
-        });
-    }
- */
     private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getChildFragmentManager();//getSupportFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
