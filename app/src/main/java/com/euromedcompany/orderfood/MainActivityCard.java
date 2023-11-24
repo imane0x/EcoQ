@@ -40,7 +40,7 @@ public class MainActivityCard extends AppCompatActivity {
             } else if (itemId == R.id.explore) {
                 replaceFragment(new ExploreFragment());
             }else if (itemId == R.id.shorts) {
-                replaceFragment(new ShortsFragment());
+                replaceFragment(new ImageFragment());
             }
             return true;
         });
