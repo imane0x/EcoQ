@@ -1,13 +1,12 @@
 package com.euromedcompany.orderfood;
-import android.app.Activity;
-import android.content.ContentResolver;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -20,41 +19,38 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 
 public class ImageFragment extends Fragment {
 
-    private FloatingActionButton uploadButton;
+    private EditText uploadCaption;
     private ImageView uploadImage;
-    EditText uploadCaption;
-    ProgressBar progressBar;
-    private Uri imageUri;
-    final private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Images");
-    final private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+    private ProgressBar progressBar;
+    private FloatingActionButton uploadButton;
 
-    public ImageFragment() {
-        // Required empty public constructor
-    }
+    private String imageURL;
+    private Uri uri;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_image, container, false);
 
-        uploadButton = view.findViewById(R.id.uploadButton);
         uploadCaption = view.findViewById(R.id.uploadCaption);
         uploadImage = view.findViewById(R.id.uploadImage);
         progressBar = view.findViewById(R.id.progressBar);
+        uploadButton = view.findViewById(R.id.uploadButton);
+
         progressBar.setVisibility(View.INVISIBLE);
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
@@ -62,10 +58,10 @@ public class ImageFragment extends Fragment {
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK) {
+                        if (result.getResultCode() == getActivity().RESULT_OK){
                             Intent data = result.getData();
-                            imageUri = data.getData();
-                            uploadImage.setImageURI(imageUri);
+                            uri = data.getData();
+                            uploadImage.setImageURI(uri);
                         } else {
                             Toast.makeText(requireContext(), "No Image Selected", Toast.LENGTH_SHORT).show();
                         }
@@ -76,8 +72,7 @@ public class ImageFragment extends Fragment {
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent photoPicker = new Intent();
-                photoPicker.setAction(Intent.ACTION_GET_CONTENT);
+                Intent photoPicker = new Intent(Intent.ACTION_PICK);
                 photoPicker.setType("image/*");
                 activityResultLauncher.launch(photoPicker);
             }
@@ -86,52 +81,93 @@ public class ImageFragment extends Fragment {
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (imageUri != null) {
-                    uploadToFirebase(imageUri);
-                } else {
-                    Toast.makeText(requireContext(), "Please select an image", Toast.LENGTH_SHORT).show();
-                }
+                uploadData();
             }
         });
 
         return view;
     }
 
-    private void uploadToFirebase(Uri uri) {
-        String caption = uploadCaption.getText().toString();
-        final StorageReference imageReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(uri));
+    private void uploadData() {
+        if (uri != null) {
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images")
+                    .child(uri.getLastPathSegment());
 
-        imageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                imageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            // Display a simple progress dialog
+            ProgressDialog progressDialog = new ProgressDialog(requireContext());
+            progressDialog.setMessage("Uploading...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
+            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                    hwhile (!uriTask.isComplete());
+                    Uri urlImage = uriTask.getResult();
+                    imageURL = urlImage.toString();
+                    uploadToDatabase();
+                    progressDialog.dismiss();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    progressDialog.dismiss();
+                    Toast.makeText(requireContext(), "Upload Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(requireContext(), "No Image Selected", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void uploadToDatabase() {
+        String caption = uploadCaption.getText().toString();
+
+        DataClass dataClass = new DataClass(imageURL,caption);
+
+        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+
+        FirebaseDatabase.getInstance().getReference("Image Captions").child(currentDate)
+                .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Uri uri) {
-                        DataClass dataClass = new DataClass(uri.toString(), caption);
-                        String key = databaseReference.push().getKey();
-                        databaseReference.child(key).setValue(dataClass);
-                        progressBar.setVisibility(View.INVISIBLE);
-                        Toast.makeText(requireContext(), "Uploaded", Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(requireContext(), "Upload Successful", Toast.LENGTH_SHORT).show();
+                            // Note: If you are using this fragment within an activity, you might want to call getActivity().finish() instead
+                            requireActivity().finish();
+                        } else {
+                            Toast.makeText(requireContext(), "Upload Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
-            }
-        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                progressBar.setVisibility(View.VISIBLE);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                progressBar.setVisibility(View.INVISIBLE);
-                Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private String getFileExtension(Uri fileUri) {
-        ContentResolver contentResolver = requireActivity().getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(contentResolver.getType(fileUri));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
