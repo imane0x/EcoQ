@@ -12,18 +12,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.euromedcompany.orderfood.databinding.ActivityMainCardBinding;
 
 public class MainActivityCard extends AppCompatActivity {
-        CardView videoCard, shortsCard, liveCard, exploreCard;
-        ActivityMainCardBinding binding;
+    ActivityMainCardBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            //setContentView(R.layout.activity_main_card);
-            //videoCard = findViewById(R.id.videoCard);
-            //shortsCard = findViewById(R.id.shortsCard);
-            //liveCard = findViewById(R.id.liveCard);
-            //exploreCard = findViewById(R.id.exploreCard);
-
 
         binding = ActivityMainCardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -53,5 +46,3 @@ public class MainActivityCard extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 }
-
-
