@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="issueTypes">
-        <item>prbitem1</item>
-        <item>prbitem2</item>
-        <item>prbitem3</item>
-        <item>prbitem4</item>
-    </string-array>
-</resources>
