@@ -1,5 +1,6 @@
 package com.euromedcompany.orderfood;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,10 +31,37 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return new MyViewHolder(view);
     }
 
-        @Override
+//        @Override
+//    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+//        Glide.with(context).load(dataList.get(position).getImageURL()).into(holder.staggeredImages);
+//        holder.recyclerTitle.setText(dataList.get(position).getTitle());
+//    }
+
+    @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Glide.with(context).load(dataList.get(position).getImageURL()).into(holder.staggeredImages);
         holder.recyclerTitle.setText(dataList.get(position).getTitle());
+
+        // Set OnClickListener for the recyclerTitle TextView
+        holder.recyclerTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the selected DataClass item using getAdapterPosition()
+                int clickedPosition = holder.getAdapterPosition();
+                if (clickedPosition != RecyclerView.NO_POSITION) {
+                    DataClass selectedItem = dataList.get(clickedPosition);
+
+                    // Example: Start YourDetailsActivity with the selected item's data
+                    Intent intent = new Intent(context, DetailsActivity.class);
+                    intent.putExtra("ImageURL", selectedItem.getImageURL());
+                    intent.putExtra("Title", selectedItem.getTitle());
+                    intent.putExtra("Type", selectedItem.getType());
+                    intent.putExtra("Description", selectedItem.getDesc());
+
+                    context.startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
