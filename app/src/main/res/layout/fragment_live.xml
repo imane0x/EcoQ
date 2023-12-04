@@ -27,6 +27,8 @@
         android:id="@+id/recyclerTitle"
         android:layout_below="@id/recyclerView"/>
 
+    <!--        android:layout_below="@id/recyclerView"-->
+
 </RelativeLayout>
 
 

@@ -5,14 +5,23 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
+<!--    <com.makeramen.roundedimageview.RoundedImageView-->
+<!--        android:id="@+id/staggeredImages"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:scaleType="c"-->
+<!--        app:riv_corner_radius="12dp"-->
+<!--        android:adjustViewBounds="true"/>-->
     <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/staggeredImages"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
+        android:layout_height="wrap_content"
+        android:id="@+id/staggeredImages"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         app:riv_corner_radius="12dp"
         android:adjustViewBounds="true"/>
-
     <TextView
         android:id="@+id/recyclerTitle"
         android:layout_width="match_parent"
