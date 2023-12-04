@@ -12,3 +12,6 @@ public class LiveCardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_live_card);
     }
 }
+
+
+
