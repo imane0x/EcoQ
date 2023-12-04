@@ -58,6 +58,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivityCard"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
 
         <meta-data
