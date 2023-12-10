@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/pagebkg"
+    android:background="@drawable/bg_login"
     tools:context=".LogInActivity">
 
     <androidx.cardview.widget.CardView
@@ -23,7 +23,7 @@
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:padding="24dp"
-            android:background="@drawable/custom_edittext">
+            android:background="@color/earth_light">
 
             <TextView
                 android:layout_width="match_parent"
@@ -33,13 +33,13 @@
                 android:textSize="36sp"
                 android:textAlignment="center"
                 android:textStyle="bold"
-                android:textColor="@color/lavender"/>
+                android:textColor="@color/green_trees"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/login_email"
-                android:background="@drawable/custom_edittext"
+                android:background="@drawable/custom_edittext_green"
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
                 android:hint="Email"
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/login_password"
-                android:background="@drawable/custom_edittext"
+                android:background="@drawable/custom_edittext_green"
                 android:layout_marginTop="20dp"
                 android:inputType="textPassword"
                 android:padding="8dp"
@@ -62,12 +62,12 @@
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:text="Login"
                 android:id="@+id/login_button"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/lavender"
+                android:backgroundTint="#575e57"
                 app:cornerRadius = "20dp"/>
 
 
@@ -80,7 +80,7 @@
                 android:layout_gravity="center"
                 android:text="Not yet registered? Sign Up"
                 android:textAlignment="center"
-                android:textColor="@color/lavender"
+                android:textColor="@color/green_trees"
                 android:textSize="18sp" />
 
         </LinearLayout>
