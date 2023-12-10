@@ -1,17 +1,12 @@
 package com.euromedcompany.orderfood;
 
-import static androidx.constraintlayout.motion.widget.Debug.getLocation;
-
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.content.pm.PackageManager;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
 import android.app.Activity;
@@ -23,7 +18,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,7 +31,7 @@ import com.google.firebase.storage.UploadTask;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class ImageFragment extends Fragment {
+public class ReportFragment extends Fragment {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     ImageView uploadImage;
     Button submitButton;
@@ -48,7 +42,7 @@ public class ImageFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_image, container, false);
+        View view = inflater.inflate(R.layout.fragment_report, container, false);
 
     //@Override
     //protected void onCreate(Bundle savedInstanceState) {

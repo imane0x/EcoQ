@@ -3,12 +3,11 @@ package com.euromedcompany.orderfood;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import androidx.cardview.widget.CardView;
-import android.content.Intent;
-import android.view.View;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.euromedcompany.orderfood.databinding.ActivityMainCardBinding;
 
 public class MainActivityCard extends AppCompatActivity {
@@ -27,7 +26,7 @@ public class MainActivityCard extends AppCompatActivity {
             if (itemId == R.id.home) {
                 replaceFragment(new HomeFragment());
             } else if (itemId == R.id.report) {
-                replaceFragment(new ImageFragment());
+                replaceFragment(new ReportFragment());
             } else if (itemId == R.id.ecoChat) {
                 replaceFragment(new VideoFragment());
             } else if (itemId == R.id.engage) {
