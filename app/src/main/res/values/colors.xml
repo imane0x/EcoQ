@@ -16,7 +16,8 @@
     <color name="lavender">#8692f7</color>
     <color name="grey">#808080</color>
     <color name="earth">#CA8D37</color>
-    <color name="earth_light">#fff6e3</color>
+    <color name="earth_light">#fdf6ec</color>
+<!--    <color name="earth_light">#fff6e3</color>-->
     <color name="green_trees">#575e57</color>
 </resources>
 <!--<resources>-->

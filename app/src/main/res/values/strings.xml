@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">order food</string>
+    <string name="app_name">EcoQ</string>
     <string name="screen1">Report</string>
     <string name="screen2">Engage</string>
-    <string name="screen3">Go Live</string>
+    <string name="screen3">EcoChat</string>
     <string name="screen1desc">Record a new video or select a video you already have on your phone.
         Watch YouTube Videos for Free</string>
     <string name="screen2desc">Create, edit, and upload your own short videos.
