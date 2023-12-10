@@ -17,8 +17,8 @@ public class ViewPagerAdapter extends PagerAdapter {
     Context context;
 
     int sliderAllImages[] = {
-            R.drawable.video,
-            R.drawable.shorts,
+            R.drawable.report_slide,
+            R.drawable.engage_slide,
             R.drawable.live,
     };
 

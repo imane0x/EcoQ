@@ -1,12 +1,17 @@
 package com.euromedcompany.orderfood;
 
+import static androidx.constraintlayout.motion.widget.Debug.getLocation;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.content.pm.PackageManager;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
 import android.app.Activity;
@@ -18,6 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,10 +36,12 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import java.text.DateFormat;
 import java.util.Calendar;
+
 public class ImageFragment extends Fragment {
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     ImageView uploadImage;
     Button submitButton;
-    EditText issueTitle, uploadDesc;
+    EditText issueTitle, issueDescription;
     Spinner issueTypeSpinner;
     String imageURL;
     Uri uri;
@@ -47,7 +55,7 @@ public class ImageFragment extends Fragment {
         //   super.onCreate(savedInstanceState);
         // setContentView(R.layout.fragment_image);
         uploadImage = view.findViewById(R.id.uploadImage);
-        uploadDesc = view.findViewById(R.id.issueDescription);
+        issueDescription = view.findViewById(R.id.issueDescription);
         issueTypeSpinner = view.findViewById(R.id.issueTypeSpinner);
         issueTitle = view.findViewById(R.id.issueTitle);
         submitButton = view.findViewById(R.id.submitButton);
@@ -79,10 +87,18 @@ public class ImageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 saveData();
+                uploadImage = view.findViewById(R.id.uploadImage);
+                //uploadImage.setImageURI(null); // Clear the image
+                uploadImage.setImageResource(R.drawable.upload);
+                issueTitle.setText("");
+                issueDescription.setText("");
+                issueTypeSpinner.setSelection(0);
+                uri = null;
             }
         });
         return view;
     }
+
     public void saveData(){
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Reports")
                 .child(uri.getLastPathSegment());
@@ -111,7 +127,7 @@ public class ImageFragment extends Fragment {
     public void uploadData(){
         String title = issueTitle.getText().toString();
         String type = issueTypeSpinner.getSelectedItem().toString();
-        String desc = uploadDesc.getText().toString();
+        String desc = issueDescription.getText().toString();
         DataClass dataClass = new DataClass(imageURL, title, type, desc);
 
         // We are changing the child from title to currentDate,

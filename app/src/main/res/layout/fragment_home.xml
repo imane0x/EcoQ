@@ -9,8 +9,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/pagebkg"
-        tools:context=".MainActivityCard">
+        android:background="@drawable/bg_login"
+        tools:context=".MainActivity">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,7 +27,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="40dp"
                 android:fontFamily="@font/aclonica"
-                android:text="Appy"
+                android:text="EcoQ"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toTopOf="@+id/appDesc"
@@ -87,9 +88,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/videoName"
-                            android:text="Video"
+                            android:text="@string/screen1"
                             android:textSize="20sp"
-                            android:textColor="@color/lavender"
+                            android:textColor="@color/green_trees"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -99,7 +100,7 @@
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:id="@+id/videoImage"
-                            android:src="@drawable/video"
+                            android:src="@drawable/report_slide"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"/>
 
@@ -123,9 +124,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/shortsName"
-                            android:text="Shorts"
+                            android:text="@string/screen2"
                             android:textSize="20sp"
-                            android:textColor="@color/lavender"
+                            android:textColor="@color/green_trees"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -135,7 +136,7 @@
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:id="@+id/shortsImage"
-                            android:src="@drawable/shorts"
+                            android:src="@drawable/engage_slide"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"/>
 
@@ -172,9 +173,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/liveName"
-                            android:text="Live"
+                            android:text="@string/screen3"
                             android:textSize="20sp"
-                            android:textColor="@color/lavender"
+                            android:textColor="@color/green_trees"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -184,7 +185,7 @@
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:id="@+id/liveImage"
-                            android:src="@drawable/live"
+                            android:src="@drawable/engage_slide"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"/>
 
@@ -210,7 +211,7 @@
                             android:id="@+id/exploreName"
                             android:text="Explore"
                             android:textSize="20sp"
-                            android:textColor="@color/lavender"
+                            android:textColor="@color/green_trees"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -220,7 +221,7 @@
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:id="@+id/exploreImage"
-                            android:src="@drawable/start"
+                            android:src="@drawable/engage_slide"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"/>
 
@@ -232,6 +233,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -258,9 +260,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/bottomNavigationView"
+                android:background="@color/earth_light"
                 app:labelVisibilityMode="labeled"
-                android:background="@android:color/transparent"
                 app:menu="@menu/bottom_menu"/>
+            <!--android:background="@android:color/transparent"-->
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 

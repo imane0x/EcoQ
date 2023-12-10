@@ -13,6 +13,7 @@ tools:context=".NavigationActivity">
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/green_trees"
         android:drawableRight="@drawable/baseline_skip_next_24"
         android:fontFamily="@font/poppins_semibold"
         android:padding="8dp"
@@ -44,7 +45,7 @@ tools:context=".NavigationActivity">
     android:layout_marginStart="15dp"
     android:layout_marginBottom="20dp"
     android:visibility="invisible"
-    android:textColor="@color/lavender"
+    android:textColor="@color/green_trees"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent" />
 
@@ -58,7 +59,7 @@ tools:context=".NavigationActivity">
     android:fontFamily="@font/poppins_semibold"
     android:layout_marginBottom="20dp"
     android:layout_marginEnd="15dp"
-    android:textColor="@color/lavender"
+    android:textColor="@color/green_trees"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent" />
 

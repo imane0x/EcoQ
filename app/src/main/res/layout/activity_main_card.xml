@@ -9,7 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/pagebkg"
+        android:background="@drawable/bg_login"
         tools:context=".MainActivity">
 
 
@@ -88,9 +88,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/videoName"
-                            android:text="Video"
+                            android:text="@string/screen1"
                             android:textSize="20sp"
-                            android:textColor="@color/lavender"
+                            android:textColor="@color/green_trees"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -100,7 +100,7 @@
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:id="@+id/videoImage"
-                            android:src="@drawable/video"
+                            android:src="@drawable/report_slide"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"/>
 
@@ -124,9 +124,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/shortsName"
-                            android:text="Shorts"
+                            android:text="@string/screen2"
                             android:textSize="20sp"
-                            android:textColor="@color/lavender"
+                            android:textColor="@color/green_trees"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -136,7 +136,7 @@
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:id="@+id/shortsImage"
-                            android:src="@drawable/shorts"
+                            android:src="@drawable/engage_slide"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"/>
 
@@ -173,9 +173,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/liveName"
-                            android:text="Live"
+                            android:text="@string/screen3"
                             android:textSize="20sp"
-                            android:textColor="@color/lavender"
+                            android:textColor="@color/green_trees"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -185,7 +185,7 @@
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:id="@+id/liveImage"
-                            android:src="@drawable/live"
+                            android:src="@drawable/engage_slide"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"/>
 
@@ -211,7 +211,7 @@
                             android:id="@+id/exploreName"
                             android:text="Explore"
                             android:textSize="20sp"
-                            android:textColor="@color/lavender"
+                            android:textColor="@color/green_trees"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -221,7 +221,7 @@
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:id="@+id/exploreImage"
-                            android:src="@drawable/start"
+                            android:src="@drawable/engage_slide"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"/>
 
@@ -260,9 +260,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/bottomNavigationView"
+                android:background="@color/earth_light"
                 app:labelVisibilityMode="labeled"
-                android:background="@android:color/transparent"
                 app:menu="@menu/bottom_menu"/>
+            <!--android:background="@android:color/transparent"-->
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
