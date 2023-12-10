@@ -28,9 +28,9 @@ public class MainActivityCard extends AppCompatActivity {
             } else if (itemId == R.id.report) {
                 replaceFragment(new ReportFragment());
             } else if (itemId == R.id.ecoChat) {
-                replaceFragment(new VideoFragment());
+                replaceFragment(new EcoChatFragment());
             } else if (itemId == R.id.engage) {
-                replaceFragment(new LiveFragment());
+                replaceFragment(new EngageFragment());
             } else if (itemId == R.id.explore) {
                 replaceFragment(new ExploreFragment());
             }

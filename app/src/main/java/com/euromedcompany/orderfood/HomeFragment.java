@@ -30,14 +30,14 @@ public class HomeFragment extends Fragment {
         binding.engageCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(new LiveFragment());
+                replaceFragment(new EngageFragment());
             }
         });
 
         binding.ecoChatCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(new VideoFragment());
+                replaceFragment(new EcoChatFragment());
             }
         });
 
