@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/shorts"
+        android:id="@+id/report"
         android:title="Report"
         android:icon="@drawable/baseline_flag_24"/>
 
     <item
-        android:id="@+id/live"
+        android:id="@+id/engage"
         android:title="Engage"
         android:icon="@drawable/baseline_engage_24" />
 
@@ -17,7 +17,7 @@
         android:icon="@drawable/baseline_home_24"/>
 
     <item
-        android:id="@+id/video"
+        android:id="@+id/ecoChat"
         android:title="EcoChat"
         android:icon="@drawable/baseline_chat_24"/>
 

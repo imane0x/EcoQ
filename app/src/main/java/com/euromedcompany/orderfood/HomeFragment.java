@@ -20,25 +20,24 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment using data binding
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
-
-        binding.videoCard.setOnClickListener(new View.OnClickListener() {
+        binding.reportCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(new VideoFragment());
+                replaceFragment(new ImageFragment());
             }
         });
 
-        binding.shortsCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new ShortsFragment());
-            }
-        });
-
-        binding.liveCard.setOnClickListener(new View.OnClickListener() {
+        binding.engageCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 replaceFragment(new LiveFragment());
+            }
+        });
+
+        binding.ecoChatCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragment(new VideoFragment());
             }
         });
 

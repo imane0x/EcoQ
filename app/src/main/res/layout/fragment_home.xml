@@ -74,7 +74,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/videoCard"
+                    android:id="@+id/reportCard"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     app:cardElevation="20dp"
@@ -87,19 +87,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/videoName"
+                            android:id="@+id/reportName"
                             android:text="@string/screen1"
                             android:textSize="20sp"
-                            android:textColor="#075c56"
+                            android:textColor="@color/green_trees"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_below="@+id/videoImage"/>
+                            android:layout_below="@+id/reportImage"/>
 
                         <ImageView
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:id="@+id/videoImage"
+                            android:id="@+id/reportImage"
                             android:src="@drawable/report_slide"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"/>
@@ -111,7 +111,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:id="@+id/shortsCard"
+                    android:id="@+id/engageCard"
                     android:layout_weight="1"
                     app:cardElevation="20dp"
                     app:cardCornerRadius="20dp">
@@ -123,19 +123,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/shortsName"
+                            android:id="@+id/engageName"
                             android:text="@string/screen2"
                             android:textSize="20sp"
-                            android:textColor="#163611"
+                            android:textColor="@color/green_trees"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_below="@+id/shortsImage"/>
+                            android:layout_below="@+id/engageImage"/>
 
                         <ImageView
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:id="@+id/shortsImage"
+                            android:id="@+id/engageImage"
                             android:src="@drawable/engage_slide"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"/>
@@ -160,7 +160,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:id="@+id/liveCard"
+                    android:id="@+id/ecoChatCard"
                     android:layout_weight="1"
                     app:cardElevation="20dp"
                     app:cardCornerRadius="20dp">
@@ -172,19 +172,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/liveName"
+                            android:id="@+id/ecoChatName"
                             android:text="@string/screen3"
                             android:textSize="20sp"
                             android:textColor="@color/green_trees"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_below="@+id/liveImage"/>
+                            android:layout_below="@+id/ecoChatImage"/>
 
                         <ImageView
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:id="@+id/liveImage"
+                            android:id="@+id/ecoChatImage"
                             android:src="@drawable/engage_slide"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"/>

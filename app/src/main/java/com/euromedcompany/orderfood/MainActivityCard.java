@@ -26,14 +26,14 @@ public class MainActivityCard extends AppCompatActivity {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
                 replaceFragment(new HomeFragment());
-            } else if (itemId == R.id.video) {
+            } else if (itemId == R.id.report) {
+                replaceFragment(new ImageFragment());
+            } else if (itemId == R.id.ecoChat) {
                 replaceFragment(new VideoFragment());
-            } else if (itemId == R.id.live) {
+            } else if (itemId == R.id.engage) {
                 replaceFragment(new LiveFragment());
             } else if (itemId == R.id.explore) {
                 replaceFragment(new ExploreFragment());
-            }else if (itemId == R.id.shorts) {
-                replaceFragment(new ImageFragment());
             }
             return true;
         });
