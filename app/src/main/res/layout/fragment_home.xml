@@ -9,7 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_login"
+        android:background="@drawable/bg_ecoq3_white"
         tools:context=".MainActivity">
 
 
@@ -27,8 +27,8 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="40dp"
                 android:fontFamily="@font/aclonica"
-                android:text="EcoQ"
-                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/app_name"
+                android:textColor="	#075c56"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toTopOf="@+id/appDesc"
                 app:layout_constraintEnd_toStartOf="@+id/logo"
@@ -90,7 +90,7 @@
                             android:id="@+id/videoName"
                             android:text="@string/screen1"
                             android:textSize="20sp"
-                            android:textColor="@color/green_trees"
+                            android:textColor="#075c56"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -126,7 +126,7 @@
                             android:id="@+id/shortsName"
                             android:text="@string/screen2"
                             android:textSize="20sp"
-                            android:textColor="@color/green_trees"
+                            android:textColor="#163611"
                             android:fontFamily="@font/poppins_semibold"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
