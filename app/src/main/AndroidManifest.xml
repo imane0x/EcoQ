@@ -23,8 +23,9 @@
         <activity
             android:name=".VideoCardActivity"
             android:exported="false" />
+
         <activity
-            android:name=".ExploreCardActivity"
+            android:name=".ReportFragment"
             android:exported="false" />
         <activity
             android:name=".LogInActivity"
@@ -49,13 +50,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SignIn"
-            android:exported="false" />
-        <!--<activity
-            android:name=".MainActivity"
-            android:exported="false">
-        </activity>-->
+
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+
         <activity
             android:name=".MainActivityCard"
             android:windowSoftInputMode="adjustPan"

@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/upload"
-                android:id="@+id/uploadImage"
+                android:id="@+id/upload"
                 android:layout_marginTop="10dp"
                 android:scaleType="centerInside"/>
 
