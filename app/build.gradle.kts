@@ -37,6 +37,9 @@ android {
 
 dependencies {
 
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("com.android.volley:volley:1.2.1")
+
     //noinspection GradleCompatible
     implementation ("androidx.appcompat:appcompat:1.1.0")
     //implementation("androidx.appcompat:appcompat:1.6.1")

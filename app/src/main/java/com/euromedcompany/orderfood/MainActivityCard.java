@@ -3,6 +3,7 @@ package com.euromedcompany.orderfood;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -16,7 +17,6 @@ public class MainActivityCard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainCardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
@@ -25,14 +25,22 @@ public class MainActivityCard extends AppCompatActivity {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
                 replaceFragment(new HomeFragment());
+
             } else if (itemId == R.id.report) {
                 replaceFragment(new ReportFragment());
+
             } else if (itemId == R.id.ecoChat) {
+                 binding.bottomAppBar.setEnabled(false);
                 replaceFragment(new EcoChatFragment());
+                binding.bottomAppBar.setEnabled(false);
+
+
             } else if (itemId == R.id.engage) {
+
                 replaceFragment(new EngageFragment());
             } else if (itemId == R.id.explore) {
                 replaceFragment(new ExploreFragment());
+
             }
             return true;
         });
@@ -44,4 +52,7 @@ public class MainActivityCard extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
+
+
 }
