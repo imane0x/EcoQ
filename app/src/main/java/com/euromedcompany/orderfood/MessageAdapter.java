@@ -46,7 +46,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return new UserMessageViewHolder(view);
         } else {
             view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.user_message_item, parent, false);
+                    .inflate(R.layout.bot_message_item, parent, false);
             return new BotMessageViewHolder(view);
         }
     }

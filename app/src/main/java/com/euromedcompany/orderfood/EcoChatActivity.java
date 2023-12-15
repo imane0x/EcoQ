@@ -1,27 +1,21 @@
 package com.euromedcompany.orderfood;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.RetryPolicy;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -70,7 +64,8 @@ public class EcoChatActivity extends AppCompatActivity {
         JSONObject jsonObject = new JSONObject();
 
         try {
-            jsonObject.put("question", "explain climate change in simple words. be concise");
+            // "explain water scarcity in simple words. be concise"
+            jsonObject.put("question", query);
             System.out.println(jsonObject);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -79,6 +74,7 @@ public class EcoChatActivity extends AppCompatActivity {
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject,
                 response -> {
                     try {
+                        System.out.println(response);
                         String responseMsg = response.getString("result");
                         messageList.add(new MessageModel(responseMsg, "bot"));
                         messageRVAdapter.notifyDataSetChanged();
@@ -92,6 +88,15 @@ public class EcoChatActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("Content-Type", "application/json");
                 return params;
+            }
+            @Override
+            public RetryPolicy getRetryPolicy() {
+                // Set timeout to zero for no timeout (wait indefinitely)
+                return new DefaultRetryPolicy(
+                        0,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                );
             }
         };
 

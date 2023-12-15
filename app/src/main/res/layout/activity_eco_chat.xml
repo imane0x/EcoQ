@@ -2,30 +2,36 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@drawable/bg_ecoq3_white">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/green_trees"
+            android:background="#aebfa3"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ecochat_slide">
+            </ImageView>
 
             <TextView
                 android:id="@+id/idTxtTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ECOCHAT"
+                android:text="EcoChat"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="@color/white" />
+                android:textColor="@color/green_trees" />
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -34,11 +40,10 @@
         android:id="@+id/idRVMessages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_above="@+id/idTILQuery"
         android:layout_marginTop="60dp"
-        android:padding="8dp"
-        />
+        android:padding="8dp" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/idTILQuery"
@@ -53,22 +58,46 @@
         android:hint="Enter your query"
         android:padding="5dp"
         android:textColorHint="@color/black"
-        app:hintTextColor="@color/black">
+        app:hintTextColor="@color/black"
+        android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/idEdtQuery"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5sp"
-            android:drawableEnd="@drawable/baseline_send_24"
-            android:drawableTint="@color/green_trees"
-            android:ems="10"
-            android:gravity="start|center_vertical"
-            android:imeOptions="actionSend"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="14sp" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idEdtQuery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5sp"
+                android:background="@drawable/custom_edittext_green_white_bg"
+                android:drawableTint="@color/green_trees"
+                android:ems="10"
+                android:gravity="start|center_vertical"
+                android:imeOptions="actionSend"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="14sp"
+                android:layout_weight="1.6"/>
+
+            <com.devlomi.record_view.RecordButton
+                android:id="@+id/recordButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="right|end"
+                android:layout_weight=".3"
+                android:background="@drawable/baseline_mic_24"
+                android:scaleType="center"
+                android:tint="@color/colorAccent"
+                android:contentDescription="Start Recording Audio"
+                />
+
+
+        </LinearLayout>
+
     </com.google.android.material.textfield.TextInputLayout>
 </RelativeLayout>

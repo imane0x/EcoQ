@@ -67,4 +67,7 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
     implementation("com.makeramen:roundedimageview:2.3.0")
 
+    implementation("com.github.JagarYousef:ChatVoicePlayer:1.1.0")
+    implementation("com.github.3llomi:RecordView:3.1.3")
+
 }
