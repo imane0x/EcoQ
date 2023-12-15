@@ -1,5 +1,7 @@
 package com.euromedcompany.orderfood;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -7,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
 import android.app.Activity;
@@ -93,14 +96,22 @@ public class ReportFragment extends Fragment {
         return view;
     }
 
-    public void saveData(){
+    public void saveData() {
+        if (uri == null) {
+            // Handle the case where uri is null
+            Log.e(TAG, "File URI is null");
+            return;
+        }
+
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Reports")
                 .child(uri.getLastPathSegment());
+
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);
         AlertDialog dialog = builder.create();
         dialog.show();
+
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -118,6 +129,7 @@ public class ReportFragment extends Fragment {
             }
         });
     }
+
     public void uploadData(){
         String title = issueTitle.getText().toString();
         String type = issueTypeSpinner.getSelectedItem().toString();
