@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-
+    implementation("com.google.android.material:material:1.3.0-alpha02")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("com.android.volley:volley:1.2.1")
 

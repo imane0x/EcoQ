@@ -59,7 +59,7 @@
             android:id="@+id/idEdtQuery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="80sp"
+            android:layout_marginBottom="5sp"
             android:drawableEnd="@drawable/baseline_send_24"
             android:drawableTint="@color/green_trees"
             android:ems="10"

@@ -2,6 +2,7 @@ package com.euromedcompany.orderfood;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -30,9 +31,11 @@ public class MainActivityCard extends AppCompatActivity {
                 replaceFragment(new ReportFragment());
 
             } else if (itemId == R.id.ecoChat) {
-                 binding.bottomAppBar.setEnabled(false);
-                replaceFragment(new EcoChatFragment());
-                binding.bottomAppBar.setEnabled(false);
+
+
+                //replaceFragment(new EcoChatFragment());
+                startActivity(new Intent(this, EcoChatActivity.class));
+
 
 
             } else if (itemId == R.id.engage) {
@@ -45,6 +48,7 @@ public class MainActivityCard extends AppCompatActivity {
             return true;
         });
 
+
     }
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -52,7 +56,6 @@ public class MainActivityCard extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
-
 
 
 }

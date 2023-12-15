@@ -1,5 +1,6 @@
 package com.euromedcompany.orderfood;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,12 +35,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
         binding.ecoChatCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(new EcoChatFragment());
+              //  replaceFragment(new EcoChatFragment());
+                startActivity(new Intent(requireActivity(), EcoChatActivity.class));
             }
         });
+
 
         binding.exploreCard.setOnClickListener(new View.OnClickListener() {
             @Override
