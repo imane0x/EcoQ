@@ -82,9 +82,9 @@ public class ReportFragment extends Fragment {
             public void onClick(View view) {
                 saveData();
                uploadImage = view.findViewById(R.id.upload);
-                //uploadImage.setImageURI(null); // Clear the image
+               //uploadImage.setImageURI(null); // Clear the image
                // uploadImage.setImageResource(R.drawable.upload);
-//                issueTitle.setText("");
+                // issueTitle.setText("");
 //                issueDescription.setText("");
 //                issueTypeSpinner.setSelection(0);
 //                uri = null;
