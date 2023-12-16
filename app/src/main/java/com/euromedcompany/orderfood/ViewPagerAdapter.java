@@ -19,7 +19,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     int sliderAllImages[] = {
             R.drawable.report_slide,
             R.drawable.engage_slide,
-            R.drawable.engage_slide,
+            R.drawable.ecochat_slide,
     };
 
     int sliderAllTitle[] = {

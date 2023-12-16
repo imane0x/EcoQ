@@ -30,8 +30,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -39,7 +41,8 @@ dependencies {
     implementation("com.google.android.material:material:1.3.0-alpha02")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("com.android.volley:volley:1.2.1")
-
+    implementation("com.github.JagarYousef:ChatVoicePlayer:1.1.0")
+    implementation("com.github.3llomi:RecordView:3.1.3")
     //noinspection GradleCompatible
     implementation ("androidx.appcompat:appcompat:1.1.0")
     //implementation("androidx.appcompat:appcompat:1.6.1")
@@ -49,6 +52,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("androidx.core:core:1.12.0")
+    implementation("androidx.databinding:databinding-runtime:8.2.0")
     // implementation(project(mapOf("path" to ":app")))
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
