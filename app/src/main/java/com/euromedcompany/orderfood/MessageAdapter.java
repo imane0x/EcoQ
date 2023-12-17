@@ -85,7 +85,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         } else if (Objects.equals(sender, "bot") && Objects.equals(type, "text")) {
             ((BotMessageViewHolder) holder).botMsgTV.setText(messageList.get(position).getMessage());
         } else if (Objects.equals(sender, "user") && Objects.equals(type, "audio")) {
-            ((UserAudioViewHolder) holder).voicePlayerView.setAudio(messageList.get(position).getMessage());
+           ((UserAudioViewHolder) holder).voicePlayerView.setAudio(messageList.get(position).getMessage());
         }
     }
 

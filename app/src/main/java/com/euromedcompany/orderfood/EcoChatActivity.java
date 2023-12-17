@@ -33,15 +33,52 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import okhttp3.*;
+
+import java.io.File;
+import java.io.IOException;
+import android.media.AudioFormat;
+import android.media.AudioRecord;
+import android.media.MediaRecorder;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+
 
 public class EcoChatActivity extends AppCompatActivity {
 
@@ -113,10 +150,14 @@ public class EcoChatActivity extends AppCompatActivity {
 //
 //                // Upload audio to Firebase
                String time = getHumanTimeText(recordTime);
-               uploadAudioToFirebase("audio", time);
+               // uploadAudioToFirebase("audio", time);
+               uploadAudioToFirebase();
 //                Log.d("RecordTime", time);
                 String path = getRecordingFilePath();
+
                 messageList.add(new MessageModel(path, "user", "audio"));
+
+
                 messageRVAdapter.notifyDataSetChanged();
             }
 
@@ -160,7 +201,12 @@ public class EcoChatActivity extends AppCompatActivity {
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         mediaRecorder.setOutputFile(getRecordingFilePath());
-        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_WB);
+        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+
+
+
+
         try {
             mediaRecorder.prepare();
             mediaRecorder.start();
@@ -175,12 +221,112 @@ public class EcoChatActivity extends AppCompatActivity {
             mediaRecorder.reset();
             mediaRecorder.release();
             mediaRecorder = null;
+            fileUpload();
         }
     }
 
     private void cancelRecording() {
         stopRecording();
     }
+
+
+    private void fileUpload() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String serverEndpoint = "http://10.0.2.2:1010/asr";
+                    String audioFilePath = getRecordingFilePath();
+                    // Create a connection to the server endpoint
+                    URL url = new URL(serverEndpoint);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setDoOutput(true);
+                    connection.setRequestMethod("POST");
+
+                    // Set up the file to be sent
+                    try (FileInputStream fileInputStream = new FileInputStream(audioFilePath)) {
+                        String fileName = audioFilePath.substring(audioFilePath.lastIndexOf("/") + 1);
+                        byte[] fileBytes = new byte[fileInputStream.available()];
+                        fileInputStream.read(fileBytes);
+
+                        // Set up the request
+                        String boundary = "Boundary-" + System.currentTimeMillis();
+                        connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+
+                        try (DataOutputStream requestStream = new DataOutputStream(connection.getOutputStream())) {
+                            // Write the file data
+                            requestStream.writeBytes("--" + boundary + "\r\n");
+                            requestStream.writeBytes("Content-Disposition: form-data; name=\"file\"; filename=\"" + fileName + "\"\r\n");
+                            requestStream.writeBytes("Content-Type: audio/3gpp\r\n\r\n");  // Change to audio/3gpp
+                            requestStream.write(fileBytes);
+                            requestStream.writeBytes("\r\n--" + boundary + "--\r\n");
+                            requestStream.flush();
+                        }
+
+                        // Get the response from the server
+                        int responseCode = connection.getResponseCode();
+                        if (responseCode == HttpURLConnection.HTTP_OK) {
+                            // Read the response
+                            try (InputStream inputStream = connection.getInputStream();
+                                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+                                StringBuilder responseStringBuilder = new StringBuilder();
+                                String line;
+                                while ((line = reader.readLine()) != null) {
+                                    responseStringBuilder.append(line);
+                                }
+                                String responseText = responseStringBuilder.toString();
+                                System.out.println("Upload successful. Server response: " + responseText);
+
+                                // Parse the JSON response
+                                JSONObject jsonResponse = new JSONObject(responseText);
+                                String result = jsonResponse.getString("result");
+                                System.out.println("Parsed Result: " + result);
+
+                                runOnUiThread(() -> {
+                                    messageList.add(new MessageModel(result, "bot", "text"));
+                                    messageRVAdapter.notifyDataSetChanged();
+                                });
+
+                            // Now you can use the 'result' as needed
+                            } catch (IOException | JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
+
+                        } else {
+                            System.out.println("Error: " + responseCode + " - " + connection.getResponseMessage());
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    // Move the UI-related code to the UI thread using runOnUiThread
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Update UI or handle the error after the background operation is complete
+                            // For example, show a Toast message for the error
+                            Toast.makeText(EcoChatActivity.this, "Error uploading file", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                } finally {
+                    // Move the UI-related code to the UI thread using runOnUiThread
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Update UI or handle the result after the background operation is complete
+                            // For example, show a Toast message
+                            Toast.makeText(EcoChatActivity.this, "Upload complete", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        }).start();
+    }
+
+
+
 
     private void getResponse(String query) {
         System.out.println(query);
@@ -248,11 +394,50 @@ public class EcoChatActivity extends AppCompatActivity {
 
     private String getRecordingFilePath() {
         String downloadsDirPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
-        File file = new File(downloadsDirPath, "audio_file"+".wav");
+        File file = new File(downloadsDirPath, "audio_file"+".3gpp");
         return file.getPath();
     }
 
-    private void uploadAudioToFirebase(String audioName, String duration) {
+    private void uploadAudioToFirebase() {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+
+        // Create a reference to the audio file in Firebase Storage with .3gpp extension
+        StorageReference audioRef = storageRef.child("audio/" + "your_desired_file_name.3gpp");
+
+        // Get the local file URI
+        Uri file = Uri.fromFile(new File(getRecordingFilePath()));
+        System.out.println(file);
+
+        // Debugging: Log file details before upload
+        Log.d("FileUpload", "File Path: " + getRecordingFilePath());
+        Log.d("FileUpload", "File Size: " + new File(getRecordingFilePath()).length());
+
+        // Upload file to Firebase Storage
+        UploadTask uploadTask = audioRef.putFile(file);
+
+        // Register observers to listen for when the upload is successful or if it fails
+        uploadTask.addOnSuccessListener(taskSnapshot -> {
+            // Audio upload successful
+
+            // Get the download URL of the uploaded file
+            audioRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                // Optionally, you can perform additional actions if needed
+                // For example, update UI or trigger another process
+                Toast.makeText(EcoChatActivity.this, "Audio uploaded successfully", Toast.LENGTH_SHORT).show();
+            }).addOnFailureListener(exception -> {
+                // Handle unsuccessful uploads
+                Toast.makeText(EcoChatActivity.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
+            });
+        }).addOnFailureListener(exception -> {
+            // Handle unsuccessful uploads
+            Log.e("FileUpload", "Upload failed: " + exception.getMessage());
+            Toast.makeText(EcoChatActivity.this, "Failed to upload audio", Toast.LENGTH_SHORT).show();
+        });
+    }
+
+
+    /*  private void uploadAudioToFirebase(String audioName, String duration) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
 
@@ -284,7 +469,7 @@ public class EcoChatActivity extends AppCompatActivity {
             Toast.makeText(EcoChatActivity.this, "Failed to upload audio", Toast.LENGTH_SHORT).show();
         });
     }
-
+*/
     private void saveAudioInfoToDatabase(String audioName, String duration, String storagePath) {
         // Assuming you have a Firebase Realtime Database reference
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("audio_info");

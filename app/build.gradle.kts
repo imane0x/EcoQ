@@ -74,4 +74,9 @@ dependencies {
     implementation("com.github.JagarYousef:ChatVoicePlayer:1.1.0")
     implementation("com.github.3llomi:RecordView:3.1.3")
 
+
+
+    // wav
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+
 }
