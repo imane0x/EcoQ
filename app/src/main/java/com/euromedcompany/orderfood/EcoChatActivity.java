@@ -2,7 +2,6 @@ package com.euromedcompany.orderfood;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 import android.Manifest;
-import android.content.ContextWrapper;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Build;
@@ -10,32 +9,24 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.RetryPolicy;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.devlomi.record_view.OnRecordListener;
 import com.devlomi.record_view.RecordButton;
 import com.devlomi.record_view.RecordPermissionHandler;
 import com.devlomi.record_view.RecordView;
-import com.euromedcompany.orderfood.AudioInfo;
-import com.euromedcompany.orderfood.MessageAdapter;
-import com.euromedcompany.orderfood.MessageModel;
-import com.euromedcompany.orderfood.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -58,10 +49,9 @@ public class EcoChatActivity extends AppCompatActivity {
     private RecyclerView messageRV;
     private MessageAdapter messageRVAdapter;
     private ArrayList<MessageModel> messageList;
-    private String url = "http://10.0.2.2:1010/generate"; // Your server URL
+    private final String url = "http://10.0.2.2:1010/generate"; // Your server URL
     private RequestQueue queue;
     private DatabaseReference databaseReference;
-    JSONObject jsonObject = new JSONObject();
     private MediaRecorder mediaRecorder;
 
     @Override
@@ -193,20 +183,23 @@ public class EcoChatActivity extends AppCompatActivity {
     }
 
     private void getResponse(String query) {
-            System.out.println(query);
-            queryEdt.setText("");
-            RequestQueue queue = Volley.newRequestQueue(this);
-            JSONObject jsonObject = new JSONObject();
+        System.out.println(query);
+        queryEdt.setText("");
+        RequestQueue queue = Volley.newRequestQueue(this);
+        JSONObject jsonObject = new JSONObject();
 
-
+        try {
+            // "explain water scarcity in simple words. be concise"
+            jsonObject.put("question", query);
+            System.out.println(jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject,
                 response -> {
                     try {
+                        System.out.println(response);
                         String responseMsg = response.getString("result");
-
-                        // Store bot message in Firebase
-                    //    storeMessage(responseMsg, "bot");
-
                         messageList.add(new MessageModel(responseMsg, "bot", "text"));
                         messageRVAdapter.notifyDataSetChanged();
                     } catch (JSONException e) {
@@ -220,9 +213,19 @@ public class EcoChatActivity extends AppCompatActivity {
                 params.put("Content-Type", "application/json");
                 return params;
             }
+
+            @Override
+            public RetryPolicy getRetryPolicy() {
+                // Set timeout to zero for no timeout (wait indefinitely)
+                return new DefaultRetryPolicy(
+                        0,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                );
+            }
         };
 
-       queue.add(postRequest);
+        queue.add(postRequest);
     }
 
 //    private void storeMessage(String message, String sender) {
