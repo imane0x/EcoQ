@@ -18,126 +18,109 @@
             android:id="@+id/constraintLayout"
             android:layout_marginTop="20dp">
 
-            <TextView
-                android:id="@+id/appName"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="40dp"
-                android:fontFamily="@font/aclonica"
-                android:text="@string/app_name"
-                android:textColor="	#075c56"
-                android:textSize="40sp"
+            <ImageView
+                android:id="@+id/ecoqLogo"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/ecoq_logo_2"
                 app:layout_constraintBottom_toTopOf="@+id/appDesc"
-                app:layout_constraintEnd_toStartOf="@+id/logo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/appDesc"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="15dp"
-                android:text="Nurturing a Sustainable Future."
+                android:text="Because Earth Deserves A Better App."
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toStartOf="@+id/logo"
-                app:layout_constraintHorizontal_bias="1.0"
+                android:gravity="center"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/appName" />
-
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/shape"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/appName"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/ecoqLogo" />
 
             <LinearLayout
+                android:id="@+id/row1"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
-                android:id="@+id/row1"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
                 android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@id/appDesc"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/logo">
+                tools:layout_editor_absoluteY="110dp">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/videoCard"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/videoCard"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardElevation="20dp"
-                    app:cardCornerRadius="20dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="20dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <TextView
+                            android:id="@+id/videoName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/videoName"
-                            android:text="@string/screen1"
-                            android:textSize="20sp"
-                            android:textColor="#075c56"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:layout_marginTop="10dp"
+                            android:layout_below="@+id/videoImage"
                             android:layout_centerHorizontal="true"
-                            android:layout_below="@+id/videoImage"/>
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="@string/screen1"
+                            android:textColor="@color/green_trees"
+                            android:textSize="20sp" />
 
                         <ImageView
+                            android:id="@+id/videoImage"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:id="@+id/videoImage"
-                            android:src="@drawable/report_slide"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
-                            android:layout_centerHorizontal="true"/>
+                            android:src="@drawable/report_slide" />
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/shortsCard"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:id="@+id/shortsCard"
                     android:layout_weight="1"
-                    app:cardElevation="20dp"
-                    app:cardCornerRadius="20dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="20dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <TextView
+                            android:id="@+id/shortsName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/shortsName"
-                            android:text="@string/screen2"
-                            android:textSize="20sp"
-                            android:textColor="#163611"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:layout_marginTop="10dp"
+                            android:layout_below="@+id/shortsImage"
                             android:layout_centerHorizontal="true"
-                            android:layout_below="@+id/shortsImage"/>
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="@string/screen2"
+                            android:textColor="#163611"
+                            android:textSize="20sp" />
 
                         <ImageView
+                            android:id="@+id/shortsImage"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:id="@+id/shortsImage"
-                            android:src="@drawable/engage_slide"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
-                            android:layout_centerHorizontal="true"/>
+                            android:src="@drawable/engage_slide" />
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>

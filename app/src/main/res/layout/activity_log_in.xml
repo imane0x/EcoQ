@@ -66,8 +66,9 @@
                 android:text="Login"
                 android:id="@+id/login_button"
                 android:textSize="18sp"
+                android:textColor="@color/white"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="#575e57"
+                android:backgroundTint="@color/green_trees"
                 app:cornerRadius = "20dp"/>
 
 
