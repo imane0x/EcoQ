@@ -1,12 +1,10 @@
-package com.euromedcompany.orderfood;
+package com.euromedcompany.EcoQ;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.view.WindowManager;
 
 public class SplashActivity extends AppCompatActivity {
 

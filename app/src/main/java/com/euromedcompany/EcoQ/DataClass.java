@@ -1,4 +1,4 @@
-package com.euromedcompany.orderfood;
+package com.euromedcompany.EcoQ;
 
 public class DataClass {
     private String title, type, desc, imageURL;

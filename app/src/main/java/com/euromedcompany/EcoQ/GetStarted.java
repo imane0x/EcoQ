@@ -1,4 +1,4 @@
-package com.euromedcompany.orderfood;
+package com.euromedcompany.EcoQ;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;

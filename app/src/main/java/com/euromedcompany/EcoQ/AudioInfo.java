@@ -1,4 +1,4 @@
-package com.euromedcompany.orderfood;
+package com.euromedcompany.EcoQ;
 public class AudioInfo {
     private String audioName;
     private String duration;

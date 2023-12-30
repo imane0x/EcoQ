@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.euromedcompany.orderfood"
+    namespace = "com.euromedcompany.EcoQ"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.euromedcompany.orderfood"
+        applicationId = "com.euromedcompany.EcoQ"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "order food"
+rootProject.name = "EcoQ"
 include(":app")

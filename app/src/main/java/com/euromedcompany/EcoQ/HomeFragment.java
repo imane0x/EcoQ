@@ -1,4 +1,4 @@
-package com.euromedcompany.orderfood;
+package com.euromedcompany.EcoQ;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.euromedcompany.orderfood.databinding.FragmentHomeBinding;
+import com.euromedcompany.EcoQ.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 

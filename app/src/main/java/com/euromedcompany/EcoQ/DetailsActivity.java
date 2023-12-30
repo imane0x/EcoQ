@@ -1,4 +1,4 @@
-package com.euromedcompany.orderfood;
+package com.euromedcompany.EcoQ;
 // YourDetailsActivity.java
 
 import android.os.Bundle;

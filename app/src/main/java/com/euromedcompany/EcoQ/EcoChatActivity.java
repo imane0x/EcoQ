@@ -1,4 +1,4 @@
-package com.euromedcompany.orderfood;
+package com.euromedcompany.EcoQ;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 import android.Manifest;

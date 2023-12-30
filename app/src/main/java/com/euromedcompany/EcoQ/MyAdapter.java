@@ -1,4 +1,4 @@
-package com.euromedcompany.orderfood;
+package com.euromedcompany.EcoQ;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
