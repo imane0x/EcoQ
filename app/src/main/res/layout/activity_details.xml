@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/TitleTextView"
@@ -12,26 +13,27 @@
         android:gravity="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:padding="8dp"/>
+        android:paddingBottom="8dp"/>
 
     <ImageView
         android:id="@+id/ImageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:scaleType="centerInside" />
+        android:scaleType="centerInside"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/TypeTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:padding="8dp"/>
+        android:paddingBottom="4dp"/>
 
     <TextView
         android:id="@+id/DescriptionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:padding="8dp"/>
+        android:paddingBottom="8dp"/>
 
 </LinearLayout>

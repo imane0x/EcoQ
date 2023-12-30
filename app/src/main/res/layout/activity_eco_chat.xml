@@ -9,8 +9,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -66,8 +65,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <!-- android:contentDescription="desc" -->
             <com.google.android.material.textfield.TextInputEditText
-                android:contentDescription="desc"
+                android:hint="Enter your query"
                 android:id="@+id/idEdtQuery"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp"
-                android:layout_weight="1.6"/>
+                android:layout_weight="1.6" />
 
             <com.devlomi.record_view.RecordView
                 android:id="@+id/record_view"
